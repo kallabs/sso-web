@@ -3,30 +3,12 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router';
 import api from '@/utils/api'
 
-// reactive state
-const form = ref({
-    username: '',
-    email: '',
-    password: '',
-    repeatPassword: '',
-})
-const hasSignupRequested = ref(false);
 const $route = useRoute()
-
-async function onSubmit() {
-    const {repeatPassword, ...reqData} = form.value;
-    console.log(reqData);
-    const { status } = await api.post('/signup', reqData)
-    console.log(status)
-    if (status == 200) {
-        hasSignupRequested.value = true;
-    }
-}
 
 // lifecycle hooks
 onMounted(() => {
-  console.log(`The initial count is.`)
-  console.log($route.query)
+  console.log(`Signup confirmation`)
+  console.log($route.token)
 })
 </script>
 

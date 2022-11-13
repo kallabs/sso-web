@@ -7,6 +7,13 @@ export default createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/login', component: Login },
-        { path: '/signup', component: Signup },
+        { 
+            path: '/signup', 
+            component: Signup,
+            children: [{
+                  path: ':token',
+                  component: SignupConfirmation,
+            }],
+        },
     ],
 })
